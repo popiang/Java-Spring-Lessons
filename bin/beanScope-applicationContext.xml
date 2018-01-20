@@ -13,14 +13,8 @@
 
 	<bean id="myFortune" class="com.popiang.springdemo.RandomFortuneService"></bean>
 
-    <bean id="myCoach" class="com.popiang.springdemo.BaseballCoach">
+    <bean id="myCoach" class="com.popiang.springdemo.BaseballCoach" scope="prototype">
     	<constructor-arg ref="myFortune" />
-    </bean>
-    
-    <bean id="myCricketCoach" class="com.popiang.springdemo.CricketCoach">
-    	<property name="fortuneService" ref="myFortune" />
-    	<property name="emailAddress" value="${data.email}" />
-    	<property name="team" value="${data.team}" />
     </bean>
     
 </beans>

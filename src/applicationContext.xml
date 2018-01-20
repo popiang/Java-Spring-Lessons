@@ -6,10 +6,12 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <context:property-placeholder location="sport.properties"/>
 
     <!-- Define your beans here -->
 
-	<bean id="myFortune" class="com.popiang.springdemo.HappyFortuneService"></bean>
+	<bean id="myFortune" class="com.popiang.springdemo.RandomFortuneService"></bean>
 
     <bean id="myCoach" class="com.popiang.springdemo.BaseballCoach">
     	<constructor-arg ref="myFortune" />
@@ -17,6 +19,8 @@
     
     <bean id="myCricketCoach" class="com.popiang.springdemo.CricketCoach">
     	<property name="fortuneService" ref="myFortune" />
+    	<property name="emailAddress" value="${data.email}" />
+    	<property name="team" value="${data.team}" />
     </bean>
     
 </beans>
